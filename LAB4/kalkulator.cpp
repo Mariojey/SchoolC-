@@ -26,30 +26,37 @@ int main(){
 	char operatorr;
 	string textA ="",textB="";
 	int i =0;
-	while(text[i]!='/' && text[i]!='*'){
+	while(text[i]!='/' && text[i]!='*' && text[i]!='+'){
         // cout<<"Element: "<<text[i]<<endl;
-		if(static_cast<int>(text[i])== 32){
+		if((static_cast<int>(text[i])== 32 && text[i+1] == '+') || (static_cast<int>(text[i])== 32 && text[i+1] == '*')){
             operatorr = text[i+1];
-            i++;
             i++;
             break;
             // textA += text[i];
+        }else if(text[i]=='-' && text[i+1] == '-'){
+            operatorr = '-';
+            textB += '-';
+            i++;
+            i++;
+            break;
+        }else if((static_cast<int>(text[i])== 32 && text[i+1] == '&')){
+            operatorr = '&';
         }else{
             textA += text[i];
         }
         i++;
 	}
-    if(text[i] == '/' || text[i] == '*'){
+    if(text[i] == '/' || text[i] == '*' || text[i]=='+' || text[i]=='&'){
         operatorr = text[i];
+        	i++;
     }
-	i++;
 	while(i<text.length()){
 		if(static_cast<int>(text[i])!= 32){
             textB += text[i];
         }
         i++;
 	}
-        // cout<<textA<<" end of A "<<operatorr<<" start of b "<<textB<<endl;
+        cout<<textA<<" end of A "<<operatorr<<" start of b "<<textB<<endl;
     if(textA[0] == '-'){
         a = stof(textA.substr(1,textA.length()));
         b = stof(textB);
@@ -62,7 +69,7 @@ int main(){
         a = stof(textA);
         b = stof(textB);
     }
-    // cout<<a<<" "<<operatorr<<" "<<b<<endl;
+    cout<<a<<" "<<operatorr<<" "<<b<<endl;
     if(textB == "" || (operatorr != '+' && operatorr != '-' && operatorr != '*' && operatorr != '/')){
         cout<<"Nieprawidłowe działanie"<<endl;
     }else{
