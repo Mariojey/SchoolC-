@@ -1,10 +1,11 @@
-//Ćwiczenie polegające na konwersji liczby zapisanej binarnie w kodzie U2 na liczbę zapisaną dziesiętnie.
+//Zamiana z kodu U2 na system dziesiętny
+
 #include <iostream>
 #include <cmath>
 
 using namespace std;
 
-int main(){
+int main() {
     string binary;
     cin>>binary;
 
@@ -19,7 +20,6 @@ int main(){
             binary[i] = (binary[i] == '0') ? '1' : '0';
         }
 
-        //Dodanie jednyki
         bool once = true;
         for (int i = binary_size - 1; i >= 0; i--)
         {
@@ -35,7 +35,7 @@ int main(){
         
         
     }
-    //Zmiana liczby binarnej na liczbę dziesiętną
+
     for (int i = binary_size; i >= 0; i--)
     {
         if (binary[i] == '1')
@@ -46,6 +46,6 @@ int main(){
     }
 
     cout<<decimal<<endl;
-
-    return 0;
+    
+    
 }
