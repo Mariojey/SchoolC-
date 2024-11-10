@@ -1,6 +1,9 @@
 //KONWERSJA
 
 #include <iostream>
+#include <string>
+#include <locale>
+#include <codecvt>
 
 using namespace std;
 
@@ -16,6 +19,43 @@ string toLowerCase(string text){
         }else if (num >= 97 && num <= 122){
             char rep_num = static_cast<char>(num);
             newText += rep_num;
+        }else{
+            wstring_convert<codectv_utf8<wchar_t>> converter;
+            wstring wtext = converter.from_bytes(text);
+            wchar_t welement = wtext[i];
+            switch (welement)
+            {
+            case L'Ą':
+                newText += u8"ą";
+                break;
+            case L'Ę':
+                newText += "ę";
+                break;
+            case L'Ś':
+                newText += "ś";
+                break;
+            case L'Ó':
+                newText += "ó";
+                break;
+            case L'Ł':
+                newText += "ł";
+                break;
+            case L'Ń':
+                newText += "ń";
+                break;
+            case L'Ć':
+                newText += "ć";
+                break;
+            case L'Ż':
+                newText += "ż";
+                break;
+            case L'Ź':
+                newText += "ź";
+                break;
+            default:
+                break;
+            }
+            
         }
     }
     return newText;
@@ -32,6 +72,44 @@ string toUpperCase(string text){
         }else if (num >= 97 && num <= 122){
             char rep_num = static_cast<char>(num-32);
             newText += rep_num;
+        }else{
+            wstring_convert<codectv_utf8<wchar_t>> converter;
+            wstring wtext = converter.from_bytes(text);
+wchar_t welement = wtext[i];
+            switch (welement)
+            {
+            case L'Ą':
+                newText += u8"ą";
+                break;
+            case L'Ę':
+                newText += "ę";
+                break;
+            case L'Ś':
+                newText += "ś";
+                break;
+            case L'Ó':
+                newText += "ó";
+                break;
+            case L'Ł':
+                newText += "ł";
+                break;
+            case L'Ń':
+                newText += "ń";
+                break;
+            case L'Ć':
+                newText += "ć";
+                break;
+            case L'Ż':
+                newText += "ż";
+                break;
+            case L'Ź':
+                newText += "ź";
+                break;
+            default:
+                break;
+            }
+            
+            
         }
         
     }
@@ -50,6 +128,43 @@ string capitalize(string text){
             }else if(first >= 97 && first <= 122){
                 char rep_num = static_cast<char>(first-32);
                 newText += rep_num;
+            }else{
+               wstring_convert<codectv_utf8<wchar_t>> converter;
+            wstring wtext = converter.from_bytes(text);
+wchar_t welement = wtext[i];
+            switch (welement)
+            {
+            case L'Ą':
+                newText += u8"ą";
+                break;
+            case L'Ę':
+                newText += "ę";
+                break;
+            case L'Ś':
+                newText += "ś";
+                break;
+            case L'Ó':
+                newText += "ó";
+                break;
+            case L'Ł':
+                newText += "ł";
+                break;
+            case L'Ń':
+                newText += "ń";
+                break;
+            case L'Ć':
+                newText += "ć";
+                break;
+            case L'Ż':
+                newText += "ż";
+                break;
+            case L'Ź':
+                newText += "ź";
+                break;
+            default:
+                break;
+            }
+            
             }
     }
     for(int i=1; i<text.length(); i++){
@@ -63,6 +178,43 @@ string capitalize(string text){
             }else if(num >= 97 && num <= 122){
                 char rep_num = static_cast<char>(num-32);
                 newText += rep_num;
+            }else{
+               wstring_convert<codectv_utf8<wchar_t>> converter;
+            wstring wtext = converter.from_bytes(text);
+wchar_t welement = wtext[i];
+            switch (welement)
+            {
+            case L'Ą':
+                newText += u8"ą";
+                break;
+            case L'Ę':
+                newText += "ę";
+                break;
+            case L'Ś':
+                newText += "ś";
+                break;
+            case L'Ó':
+                newText += "ó";
+                break;
+            case L'Ł':
+                newText += "ł";
+                break;
+            case L'Ń':
+                newText += "ń";
+                break;
+            case L'Ć':
+                newText += "ć";
+                break;
+            case L'Ż':
+                newText += "ż";
+                break;
+            case L'Ź':
+                newText += "ź";
+                break;
+            default:
+                break;
+            }
+            
             }
         }else{
 if (num == 32)
@@ -75,6 +227,44 @@ if (num == 32)
         }else if (num >= 97 && num <= 122){
             char rep_num = static_cast<char>(num);
             newText += rep_num;
+        }else{
+
+            wstring_convert<codectv_utf8<wchar_t>> converter;
+            wstring wtext = converter.from_bytes(text);
+wchar_t welement = wtext[i];
+            switch (welement)
+            {
+            case L'Ą':
+                newText += u8"ą";
+                break;
+            case L'Ę':
+                newText += "ę";
+                break;
+            case L'Ś':
+                newText += "ś";
+                break;
+            case L'Ó':
+                newText += "ó";
+                break;
+            case L'Ł':
+                newText += "ł";
+                break;
+            case L'Ń':
+                newText += "ń";
+                break;
+            case L'Ć':
+                newText += "ć";
+                break;
+            case L'Ż':
+                newText += "ż";
+                break;
+            case L'Ź':
+                newText += "ź";
+                break;
+            default:
+                break;
+            }
+            
         }
         }
         

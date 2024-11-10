@@ -3,9 +3,9 @@
 using namespace std;
 
 int convert(const char* text){
+    int i = 0;
     int value = 0;
     int sign = 1;
-    int i = 0;
 
     if (text[0] == '-')
     {
@@ -16,7 +16,6 @@ int convert(const char* text){
     for(; text[i] != '\0'; ++i){
         value = value * 10 + (text[i] - '0');
     }
-
     return sign * value;
     
 }
