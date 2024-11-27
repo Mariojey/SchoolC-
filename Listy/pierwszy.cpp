@@ -69,6 +69,40 @@ void wstaw(Node * head, int liczba, int pozycja){
 
 }
 
+void usun(Node * head, int pozycja){
+    
+    Node * w = head;
+
+    if(pozycja == 0){
+        Node * element = head;
+        head = head->next;
+        delete element;
+        return;
+    }
+
+    int iterator = 0;
+    while(iterator < pozycja -1){
+
+        if(w==nullptr){
+            return;
+        }
+        iterator++;
+        w = w->next;
+    }
+
+    if(w==nullptr||w->next==nullptr){
+
+        return;
+
+    }else{
+
+        Node * nodeToDelete = w->next;
+        w->next = nodeToDelete->next;
+        delete nodeToDelete;
+    }
+
+}
+
 void wyczysc(Node *& head){
 
     Node * w = head;
@@ -97,7 +131,7 @@ int main(int argc, char * argv[]){
     dodaj(head, 4);
     wstaw(head, 3,2);
     wypisz(head);
-    wyczysc(head);
+    usun(head, 2);
     wypisz(head);
 
     return 0;
