@@ -45,6 +45,45 @@ void dodaj(Node * head, int liczba){
     
 }
 
+void wstaw(Node * head, int liczba, int pozycja){
+
+    Node * w = head;
+    Node * newNode = new Node{liczba, nullptr};
+
+    int iterator = 0;
+
+    while(iterator < pozycja - 1){
+        if(w==nullptr){
+            return;
+        }
+        w = w->next;
+        iterator++;
+    }
+
+    if(w==nullptr){
+        return;
+    }
+    Node * nextElement = w->next;
+    newNode->next = nextElement;
+    w->next = newNode;
+
+}
+
+void wyczysc(Node *& head){
+
+    Node * w = head;
+
+    while (w!=nullptr)
+    {
+        Node * nodeToSetNextNode = w->next;
+        delete w;   
+        w = nodeToSetNextNode;
+    }
+
+    head = nullptr;
+    
+}
+
 int main(int argc, char * argv[]){
 
     // ifstream file(argv[1]);
@@ -55,7 +94,10 @@ int main(int argc, char * argv[]){
     Node * head = first;
     head->next = second;
 
-    dodaj(head, 3);
+    dodaj(head, 4);
+    wstaw(head, 3,2);
+    wypisz(head);
+    wyczysc(head);
     wypisz(head);
 
     return 0;
