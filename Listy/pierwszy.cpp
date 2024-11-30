@@ -26,6 +26,58 @@ void wypisz(Node * head){
     
 }
 
+void wypisz_odwrotnie(Node * head){
+    if(head == nullptr){
+        return;
+    }
+    wypisz_odwrotnie(head->next);
+    cout<<setw(4);
+    cout<<head->liczba;
+}
+
+void zamien(Node *& head, int poz1, int poz2){
+
+    if(poz1 == poz2) return;
+
+    Node * previous1 = nullptr;
+    Node * current1 = head;
+
+    Node * previous2 = nullptr;
+    Node * current2 = head;
+
+    for (int i = 0; current1 != nullptr && i < poz1; i++)
+    {
+        previous1 = current1;
+        current1 = current1->next;
+    }
+
+    for (int i = 0; current2 != nullptr && i < poz2; i++)
+    {
+        previous1 = current2;
+        current2 = current2->next;
+    }
+
+    if(current1 == nullptr || current2 == nullptr) return;
+
+    if(previous1 != nullptr){
+        previous1->next = current2;
+    }else{
+        head = current2;
+    }
+
+    if(previous2 != nullptr){
+        previous2->next = current1;
+    }else{
+        head = current1;
+    }
+
+    Node * toSwap = current2->next;
+    current2->next = current1->next;
+    current1->next = toSwap;
+    
+    
+}
+
 void dodaj(Node * head, int liczba){
 
     Node * w = head;
@@ -120,19 +172,48 @@ void wyczysc(Node *& head){
 
 int main(int argc, char * argv[]){
 
-    // ifstream file(argv[1]);
+    Node * head = nullptr;
 
-    Node * first = new Node{1, nullptr};
-    Node * second = new Node{2, nullptr};
+    ifstream file(argv[1]);
 
-    Node * head = first;
-    head->next = second;
+    while (!file.eof())
+    {
+        string command;
+        int number1, number2;
+        file>>command>>number1>>number2;
+        if (command == "dodaj") 
+        { 
+            dodaj(head, number1); 
+        } 
+        else if (command == "wstaw") 
+        { 
+            wstaw(head, number1, number2); 
+        } 
+        else if (command == "usun") 
+        { 
+            usun(head, number1); 
+        } 
+        else if (command == "wyczysc") 
+        { 
+            wyczysc(head); 
+        } 
+        else if (command == "wypisz") 
+        { 
+            wypisz(head); 
+        } 
+        else if (command == "wypisz_odwrotnie") 
+        { 
+            wypisz_odwrotnie(head); 
+        } 
+        else if (command == "zamien") 
+        { 
+            zamien(head, number1, number2); 
+        }
 
-    dodaj(head, 4);
-    wstaw(head, 3,2);
-    wypisz(head);
-    usun(head, 2);
-    wypisz(head);
+    }
+
+    file.close();
+    
 
     return 0;
 }
