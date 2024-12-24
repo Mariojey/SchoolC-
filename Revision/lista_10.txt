@@ -1,0 +1,15 @@
+dodaj 3
+wypisz
+dodaj 5
+wypisz
+wstaw 7 1
+wypisz
+wstaw 8 0
+wypisz
+zamien 0 1
+wypisz
+dodaj 80
+wypisz
+wstaw 4 0
+wypisz
+wypisz_odwrotnie
