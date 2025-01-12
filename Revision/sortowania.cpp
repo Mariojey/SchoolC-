@@ -41,6 +41,43 @@ void insertionSort(int arr[], int n){
   }
 }
 
+void merge(int arr[], int left, int middle, int right){
+  int n1 = middle - left + 1;
+  int n2 = right - middle;
+
+  int leftNumbers[n1], rightNumbers[n2];
+  for(int i=0;i<n1;i++){
+    leftNumbers[i] = arr[left];
+  }
+  for(int i=0;i<n2;i++){
+    rightNumbers[i] = arr[middle+1];
+  }
+  int i = 0, j = 0, k = left;
+  while(i<n1 && j<n2){
+    if(leftNumbers[i]<=rightNumbers[j]){
+      arr[k] = leftNumbers[i];
+    }
+    else{
+      arr[k] = rightNumbers[j];
+    }
+  }
+  while(i<n1){
+    arr[k++] = leftNumbers[i++];
+  }
+  while(j<n2){
+    arr[k++] = rightNumbers[j++];
+  }
+}
+
+void mergeSort(int arr[], int left, int right){
+  if(left<right){
+    int mid = (left+right)/2;
+    mergeSort(arr, left, mid);
+    mergeSort(arr, mid+1, right);
+    merge(arr, left, mid, right);
+  }
+}
+
 int main(int argc, char * argv[]) {
 
   string sortType = argv[1];
